@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="editor">
+      <textarea contenteditable="true" id="text-input" style="resize:none;"></textarea>
+      <div id="preview" style="border-left-width:0px;"></div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="lib/markdown.js"></script>
+    <style>
+      .center {
+        display: block;
+        margin: auto;
+      }
+
+      #text-input, #preview {
+        float: left;
+        width: 500px;
+        height: 300px;
+        overflow: auto;
+        display: inline-block;
+        vertical-align: top;
+        background: #f6f6f6;
+        margin: 0px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        outline: none;
+      }
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#text-input").keyup(function(){
+          var html = markdown.toHTML($(this).val());
+          $("#preview").html(html);
+        });
+      });
+    </script>
+  </body>
+</html>
